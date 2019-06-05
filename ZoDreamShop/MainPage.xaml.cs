@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ZoDream.Shop.Views;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -25,6 +26,44 @@ namespace ZoDream.Shop
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        public Frame AppFrame => frame;
+
+
+        private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
+        {
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                if (e.SourcePageType == typeof(SettingPage))
+                {
+                    NavView.SelectedItem = NavView.SettingsItem;
+                }
+            }
+        }
+
+        private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            var label = args.InvokedItem as string;
+            var pageType =
+                args.IsSettingsInvoked ? typeof(SettingsPage) :
+                label == CustomerListLabel ? typeof(CustomerListPage) :
+                label == OrderListLabel ? typeof(OrderListPage) : null;
+            if (pageType != null && pageType != AppFrame.CurrentSourcePageType)
+            {
+                AppFrame.Navigate(pageType);
+            }
+        }
+
+        /// <summary>
+        /// Navigates the frame to the previous page.
+        /// </summary>
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            if (AppFrame.CanGoBack)
+            {
+                AppFrame.GoBack();
+            }
         }
     }
 }

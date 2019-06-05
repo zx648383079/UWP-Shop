@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ZoDream.Repository;
 using ZoDream.Repository.Rest;
+using ZoDream.Shop.ViewModels;
 
 namespace ZoDream.Shop
 {
@@ -24,6 +25,7 @@ namespace ZoDream.Shop
     /// </summary>
     sealed partial class App : Application
     {
+        public static MainViewModel ViewModel { get; } = new MainViewModel();
 
         public static IRepository Repository { get; private set; }
 
