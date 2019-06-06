@@ -46,13 +46,23 @@ namespace ZoDream.Shop
         {
             var label = args.InvokedItem as string;
             var pageType =
-                args.IsSettingsInvoked ? typeof(SettingsPage) :
-                label == CustomerListLabel ? typeof(CustomerListPage) :
-                label == OrderListLabel ? typeof(OrderListPage) : null;
+                args.IsSettingsInvoked ? typeof(SettingPage) :
+                //label == CustomerListLabel ? typeof(CustomerListPage) :
+                //label == OrderListLabel ? typeof(OrderListPage) : 
+                null;
             if (pageType != null && pageType != AppFrame.CurrentSourcePageType)
             {
                 AppFrame.Navigate(pageType);
             }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                AppFrame.Navigate(typeof(HomePage));
+            }
+            base.OnNavigatedTo(e);
         }
 
         /// <summary>
