@@ -25,13 +25,13 @@
         <ListBox x:Name="TopMenu" 
                  ItemsSource="{x:Bind ViewModel.Categories, Mode=OneWay}"
                  SelectedIndex="0"
-                 SelectionChanged="ListBox_SelectionChanged" DisplayMemberPath="Id">
+                 SelectionChanged="ListBox_SelectionChanged" DisplayMemberPath="Name">
         </ListBox>
         <ScrollViewer Grid.Column="1">
             <StackPanel>
-                <Image Source="{x:Bind ViewModel.SubCategory.Banner}"/>
-                <TextBlock Text="{x:Bind ViewModel.SubCategory.Name}"/>
-                <GridView ItemsSource="{x:Bind ViewModel.SubCategory.GoodsList}" Style="{StaticResource GoodsList}">
+                <Image Source="{x:Bind ViewModel.Banner, Mode=OneWay,Converter={StaticResource ImgConverter}}"/>
+                <!--<TextBlock Text="{x:Bind ViewModel.SubCategory.Name, Mode=OneWay}"/>
+                <GridView ItemsSource="{x:Bind ViewModel.SubCategory.GoodsList, Mode=OneWay}" Style="{StaticResource GoodsList}">
                     
                 </GridView>
                 <ListBox ItemsSource="{x:Bind ViewModel.SubCategory.Children, Mode=OneWay}">
@@ -55,7 +55,7 @@
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListBox>
+                </ListBox>-->
             </StackPanel>
         </ScrollViewer>
         <ProgressBar

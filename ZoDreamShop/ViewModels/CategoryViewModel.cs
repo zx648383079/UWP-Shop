@@ -14,6 +14,7 @@ namespace ZoDream.Shop.ViewModels
         public CategoryViewModel()
         {
             IsLoading = false;
+            LoadLeftAsync();
         }
 
         private bool _isLoading;
@@ -43,6 +44,15 @@ namespace ZoDream.Shop.ViewModels
             set { Set(ref subCategory, value); }
         }
 
+        private string banner = string.Empty;
+
+        public string Banner
+        {
+            get { return banner; }
+            set { Set(ref banner, value); }
+        }
+
+
         public async void LoadLeftAsync()
         {
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
@@ -68,10 +78,11 @@ namespace ZoDream.Shop.ViewModels
             {
                 IsLoading = true;
             });
-            var cat = await App.Repository.Category.GetInfoAsync(category.Id);
+            var cat = await App.Repository.Category.GetInfoAsync(category.Id, "goods_list,children");
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
             {
                 SubCategory = cat;
+                Banner = cat.Banner;
                 IsLoading = false;
             });
         }

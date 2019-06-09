@@ -128,6 +128,7 @@
       <DependentUpon>NumberButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ConverterHeler.cs" />
+    <Compile Include="Converters\ImageConverter.cs" />
     <Compile Include="Converters\PriceConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

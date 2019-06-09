@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace ZoDream.Models
 
         public IEnumerable<Category> Children { get; set; }
 
+        [JsonProperty(PropertyName = "goods_list")]
         public IEnumerable<Product> GoodsList { get; set; }
     }
 }

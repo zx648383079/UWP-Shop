@@ -34,7 +34,7 @@ namespace ZoDream.Shop.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel.LoadLeftAsync();
+            //ViewModel.LoadLeftAsync();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
