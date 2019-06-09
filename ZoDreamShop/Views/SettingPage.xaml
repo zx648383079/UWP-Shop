@@ -24,7 +24,7 @@
                     FontWeight="Normal"
                     Text="Theme Mode" />
                 <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
-                    <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" Content="Light" KeyDown="OnThemeRadioButtonKeyDown" />
+                    <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" Content="Light" />
                     <RadioButton Tag="Dark" Checked="OnThemeRadioButtonChecked" Content="Dark" />
                     <RadioButton Tag="Default" Checked="OnThemeRadioButtonChecked" Content="Use system setting" />
                 </StackPanel>

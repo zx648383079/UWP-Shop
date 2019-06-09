@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -146,6 +147,7 @@ namespace ZoDream.Repository.Rest
         public async Task<T> ExecuteAsync<T>(Action<HttpResponseMessage> succes = null, Action<HttpResponseMessage> failure = null)
         {
             var content = await ExecuteAsync(succes, failure);
+            Debug.WriteLine("Info: " + content);
             //if (typeof(T) == typeof(string))
             //{
             //    return (T)(object)content;

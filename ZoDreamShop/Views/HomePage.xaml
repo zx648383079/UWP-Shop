@@ -5,10 +5,89 @@
     xmlns:local="using:ZoDream.Shop.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:converter="using:ZoDream.Shop.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/HomeSkin.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid>
-        
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <FlipView x:Name="BannerView" 
+                      ItemsSource="{x:Bind ViewModel.Banners}" 
+                      Height="200" SizeChanged="BannerView_SizeChanged">
+                    <FlipView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Content,Mode=OneTime}"></Image>
+                        </DataTemplate>
+                    </FlipView.ItemTemplate>
+                </FlipView>
+                <ListBox ItemsSource="{x:Bind ViewModel.Categories}" HorizontalAlignment="Stretch">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:UniformGrid
+                                Orientation="Horizontal" Columns="5"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="44"/>
+                                    <RowDefinition Height="24"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Icon}"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Name}" FontWeight="Bold" 
+                                       Style="{StaticResource BaseTextBlockStyle}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel Visibility="{x:Bind converter:ConverterHeler.CollapsedIfEmpty(ViewModel.NewProducts), Mode=OneWay}">
+                    <TextBlock Text="最新商品" Style="{StaticResource HeaderTitle}"/>
+                    <GridView ItemsSource="{x:Bind ViewModel.NewProducts}" Style="{StaticResource GoodsList}">
+                    </GridView>
+                </StackPanel>
+                <StackPanel Visibility="{x:Bind converter:ConverterHeler.CollapsedIfEmpty(ViewModel.HotProducts), Mode=OneWay}">
+                    <TextBlock Text="热门商品" Style="{StaticResource HeaderTitle}"/>
+                    <GridView ItemsSource="{x:Bind ViewModel.HotProducts}" Style="{StaticResource GoodsList}">
+                    </GridView>
+                </StackPanel>
+                <StackPanel Visibility="{x:Bind converter:ConverterHeler.CollapsedIfEmpty(ViewModel.BestProducts), Mode=OneWay}">
+                    <TextBlock Text="推荐商品" Style="{StaticResource HeaderTitle}"/>
+                    <GridView ItemsSource="{x:Bind ViewModel.BestProducts}" Style="{StaticResource GoodsList}">
+                    </GridView>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <ProgressBar
+            Margin="0,50,0,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            IsIndeterminate="True"
+            Visibility="{x:Bind ViewModel.IsLoading, Mode=OneWay}" />
     </Grid>
+ 
 </Page>

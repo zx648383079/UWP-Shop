@@ -11,15 +11,47 @@
     <Grid>
         <NavigationView
             x:Name="NavView"
-            OpenPaneLength="160"
+            
             AlwaysShowHeader="False"
             IsSettingsVisible="True"
             ItemInvoked="NavigationView_ItemInvoked"
             BackRequested="NavView_BackRequested"
-            IsBackEnabled="{x:Bind AppFrame.CanGoBack, Mode=OneWay}">
+            IsBackEnabled="{x:Bind AppFrame.CanGoBack, Mode=OneWay}" FontFamily="Segoe MDL2 Assets">
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox x:Name="SearchBox" 
+                                ItemsSource="{x:Bind ViewModel.Tips}"
+                                PlaceholderText="搜索" QueryIcon="Find" 
+                                QuerySubmitted="SearchBox_QuerySubmitted" 
+                                SuggestionChosen="SearchBox_SuggestionChosen"
+                                TextChanged="SearchBox_TextChanged"/>
+            </NavigationView.AutoSuggestBox>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="首页" Icon="Home"/>
+                <NavigationViewItem Content="扫一扫">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE156;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="分类">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE154;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="购物车">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <NavigationView.PaneFooter>
+                <NavigationViewItem Content="我的" Tapped="NavigationViewItem_Tapped">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE77B;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.PaneFooter>
             <Frame
                 x:Name="frame"
-                Margin="20,0,0,0"
                 Navigating="OnNavigatingToPage">
                 <Frame.ContentTransitions>
                     <TransitionCollection>

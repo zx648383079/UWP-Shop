@@ -120,7 +120,17 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Ad.cs" />
+    <Compile Include="Article.cs" />
+    <Compile Include="ArticleCategory.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="CheckIn.cs" />
+    <Compile Include="Coupon.cs" />
+    <Compile Include="HomeProduct.cs" />
+    <Compile Include="InvoiceLog.cs" />
+    <Compile Include="InvoiceTitle.cs" />
     <Compile Include="Paging.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ZoDreamModels.rd.xml" />
@@ -128,6 +138,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

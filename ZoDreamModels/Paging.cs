@@ -17,10 +17,33 @@ namespace ZoDream.Models
         public bool More { get; set; }
     }
 
-    public class Page<T>
+    public class BaseResponse
+    {
+        public string Appid { get; set; }
+
+        public string Sign { get; set; }
+
+        public string SignType { get; set; }
+
+        public string Timestamp { get; set; }
+
+        public string Encrypt { get; set; }
+
+        public string EncryptType { get; set; }
+    }
+
+    public class ResponseData<T>: BaseResponse
+    {
+        public IList<T> Data { get; set; }
+    }
+
+    public class ResponseDataOne<T> : BaseResponse
+    {
+        public T Data { get; set; }
+    }
+
+    public class Page<T> : ResponseData<T>
     {
         public Paging Paging { get; set; }
-
-        public IEnumerable<T> Data { get; set; }
     }
 }

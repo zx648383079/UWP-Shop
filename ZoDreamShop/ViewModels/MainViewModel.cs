@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Uwp.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,21 +25,44 @@ namespace ZoDream.Shop.ViewModels
             set => Set(ref _isLoading, value);
         }
 
-        public async Task GetCustomerListAsync()
-        {
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
+        private ObservableCollection<string> tips = new ObservableCollection<string>();
 
-            var customers = await App.Repository.Users.GetAsync();
-            if (customers == null)
-            {
-                return;
-            }
+        public ObservableCollection<string> Tips
+        {
+            get { return tips; }
+            set { Set(ref tips, value); }
+        }
+
+        public async Task LoadTipAsync(string keywords)
+        {
+            var data = await App.Repository.Product.GetTipsAsync(keywords);
 
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
             {
-                // TODO
-                IsLoading = false;
+                tips.Clear();
+                foreach (var item in data.Data)
+                {
+                    Tips.Add(item);
+                }
+
             });
         }
+
+        //public async Task LoadTipAsync()
+        //{
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
+
+        //    var customers = await App.Repository.Users.GetAsync();
+        //    if (customers == null)
+        //    {
+        //        return;
+        //    }
+
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+        //    {
+        //        // TODO
+        //        IsLoading = false;
+        //    });
+        //}
     }
 }

@@ -25,11 +25,27 @@ namespace ZoDream.Repository.Rest
         /// </summary>
         public async Task<TResult> GetAsync<TResult>(string controller)
         {
-            using (var client = BaseClient())
+            using (var client = CreateHttp())
             {
-                var response = await client.GetAsync(controller);
-                string json = await response.Content.ReadAsStringAsync();
-                TResult obj = JsonConvert.DeserializeObject<TResult>(json);
+                var obj = await client.AppendPath(controller).ExecuteAsync<TResult>();
+                return obj;
+            }
+        }
+
+        public async Task<TResult> GetAsync<TResult>(string controller, string key, object value)
+        {
+            using (var client = CreateHttp())
+            {
+                var obj = await client.AppendPath(controller).AddQuery(key, value.ToString()).ExecuteAsync<TResult>();
+                return obj;
+            }
+        }
+
+        public async Task<TResult> GetAsync<TResult>(string controller, Dictionary<string, string> parameters)
+        {
+            using (var client = CreateHttp())
+            {
+                var obj = await client.AppendPath(controller).AddQueries(parameters).ExecuteAsync<TResult>();
                 return obj;
             }
         }

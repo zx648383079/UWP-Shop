@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ZoDream.Models;
 using ZoDream.Shop.ViewModels;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -21,27 +22,24 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class HomePage : Page
+    public sealed partial class CategoryPage : Page
     {
-        public HomePage()
+        public CategoryPage()
         {
             this.InitializeComponent();
         }
 
-        public HomeViewModel ViewModel { get; } = new HomeViewModel();
+        public CategoryViewModel ViewModel => new CategoryViewModel();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (ViewModel.Banners.Count < 1)
-            {
-                ViewModel.Load();
-            }
+            ViewModel.LoadLeftAsync();
         }
 
-        private void BannerView_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((FlipView)sender).Height = ((FlipView)sender).ActualWidth * 400 / 750;
+            ViewModel.ChangeMenu(((ListBox)sender).SelectedItem as Category);
         }
     }
 }

@@ -42,7 +42,7 @@ namespace ZoDream.Shop.Views
         {
             base.OnNavigatedTo(e);
 
-            NavigationRootPage.Current.NavigationView.Header = "设置";
+            //NavigationRootPage.Current.NavigationView.Header = "设置";
         }
 
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)

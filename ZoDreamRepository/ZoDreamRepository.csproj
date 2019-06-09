@@ -121,12 +121,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="IProductRepository.cs" />
+    <Compile Include="ICategoryRepository.cs" />
+    <Compile Include="IAdRepository.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rest\HttpLoginException.cs" />
+    <Compile Include="Rest\HttpException.cs" />
     <Compile Include="Rest\HttpHelper.cs" />
+    <Compile Include="Rest\RestProductRepository.cs" />
+    <Compile Include="Rest\RestCategoryRepository.cs" />
     <Compile Include="Rest\RestClient.cs" />
     <Compile Include="Rest\RestRepository.cs" />
+    <Compile Include="Rest\RestAdRepository.cs" />
     <Compile Include="Rest\RestUserRepository.cs" />
     <EmbeddedResource Include="Properties\ZoDreamRepository.rd.xml" />
   </ItemGroup>

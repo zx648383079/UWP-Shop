@@ -21,5 +21,11 @@ namespace ZoDream.Repository.Rest
         }
 
         public IUserRepository Users => new RestUserRepository(_url);
+
+        public IAdRepository Ads => new RestAdRepository(_url);
+
+        public ICategoryRepository Category => new RestCategoryRepository(_url);
+
+        public IProductRepository Product => new RestProductRepository(_url);
     }
 }

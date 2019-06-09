@@ -7,17 +7,15 @@ using ZoDream.Models;
 
 namespace ZoDream.Repository
 {
-    public interface IUserRepository
+    public interface IAdRepository
     {
         /// <summary>
         /// Returns all customers. 
         /// </summary>
-        Task<IEnumerable<User>> GetAsync();
+        Task<ResponseData<Ad>> GetAsync(string position);
 
-        Task<User> GetAsync(uint id);
+        Task<ResponseData<Ad>> GetAsync(int position);
 
-        Task DeleteAsync(uint id);
-
-
+        Task<ResponseData<Ad>> GetBannersAsync();
     }
 }

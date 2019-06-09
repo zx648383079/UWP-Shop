@@ -15,7 +15,7 @@
 
   <Properties>
     <DisplayName>ZoDreamShop</DisplayName>
-    <PublisherDisplayName>zx648</PublisherDisplayName>
+    <PublisherDisplayName>zodream</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -45,5 +45,8 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <uap:Capability Name="picturesLibrary"/>
+    <DeviceCapability Name="webcam"/>
+    <DeviceCapability Name="location"/>
   </Capabilities>
 </Package>

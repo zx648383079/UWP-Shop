@@ -21,27 +21,39 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class HomePage : Page
+    public sealed partial class SearchPage : Page
     {
-        public HomePage()
+        public SearchPage()
         {
             this.InitializeComponent();
         }
 
-        public HomeViewModel ViewModel { get; } = new HomeViewModel();
+        public SearchViewModel ViewModel { get; } = new SearchViewModel();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (ViewModel.Banners.Count < 1)
-            {
-                ViewModel.Load();
-            }
+            ViewModel.Load(e.Parameter as SearchQuery);
         }
 
-        private void BannerView_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void RefreshContainer_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
         {
-            ((FlipView)sender).Height = ((FlipView)sender).ActualWidth * 400 / 750;
+            ViewModel.RefreshAsync();
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            switch (((AppBarButton)sender).Label)
+            {
+                case "刷新":
+                    RefreshBox.RequestRefresh();
+                    break;
+                case "加载更多":
+                    ViewModel.MoreAsync(); ;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
