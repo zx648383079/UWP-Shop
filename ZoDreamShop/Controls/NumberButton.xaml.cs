@@ -49,5 +49,17 @@ namespace ZoDream.Shop.Controls
             DependencyProperty.Register("Count", typeof(int), typeof(NumberButton), new PropertyMetadata(0));
 
 
+        public bool HasRightBorder
+        {
+            get { return (bool)GetValue(HasRightBorderProperty); }
+            set { SetValue(HasRightBorderProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HasRightBorder.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HasRightBorderProperty =
+            DependencyProperty.Register("HasRightBorder", typeof(bool), typeof(NumberButton), new PropertyMetadata(false));
+
+
+
     }
 }

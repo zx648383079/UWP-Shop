@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace ZoDream.Shop.Converters
 {
@@ -14,7 +15,7 @@ namespace ZoDream.Shop.Converters
             var imageUrl = (string)value;
             if (string.IsNullOrEmpty(imageUrl))
             {
-                return string.Empty;
+                return new BitmapImage();
             }
             else
             {

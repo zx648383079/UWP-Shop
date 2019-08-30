@@ -45,5 +45,18 @@ namespace ZoDream.Shop.Controls
         // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(string), typeof(IconMenuItem), new PropertyMetadata(null));
+
+
+
+        public bool HasBottomBorder
+        {
+            get { return (bool)GetValue(HasBottomBorderProperty); }
+            set { SetValue(HasBottomBorderProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HasBottomBorder.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HasBottomBorderProperty =
+            DependencyProperty.Register("HasBottomBorder", typeof(bool), typeof(IconMenuItem), new PropertyMetadata(false));
+
     }
 }

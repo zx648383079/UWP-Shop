@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:ZoDream.Models"
+    xmlns:converter="using:ZoDream.Shop.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -29,8 +30,9 @@
         </ListBox>
         <ScrollViewer Grid.Column="1">
             <StackPanel>
-                <Image Source="{x:Bind ViewModel.Banner, Mode=OneWay,Converter={StaticResource ImgConverter}}"/>
-                <!--<TextBlock Text="{x:Bind ViewModel.SubCategory.Name, Mode=OneWay}"/>
+                <Image
+                    Source="{x:Bind ViewModel.Banner,Mode=OneWay,Converter={StaticResource ImgConverter}}"/>
+                <TextBlock Text="{x:Bind ViewModel.SubCategory.Name, Mode=OneWay}"/>
                 <GridView ItemsSource="{x:Bind ViewModel.SubCategory.GoodsList, Mode=OneWay}" Style="{StaticResource GoodsList}">
                     
                 </GridView>
@@ -55,7 +57,7 @@
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListBox>-->
+                </ListBox>
             </StackPanel>
         </ScrollViewer>
         <ProgressBar

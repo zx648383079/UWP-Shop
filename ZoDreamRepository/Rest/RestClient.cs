@@ -185,6 +185,7 @@ namespace ZoDream.Repository.Rest
             requestMessage.RequestUri = new Uri(uri, AddQeuryString());
             try
             {
+                Debug.WriteLine("Info: " + requestMessage.RequestUri.ToString());
                 var responseMessage = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
                 if (responseMessage == null)

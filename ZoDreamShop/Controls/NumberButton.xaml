@@ -5,6 +5,7 @@
     xmlns:local="using:ZoDream.Shop.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:ZoDream.Shop.Converters"
     mc:Ignorable="d"
     x:Name="root"
     d:DesignHeight="300"
@@ -15,7 +16,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Count,ElementName=root}" FontSize="50"/>
-        <TextBlock Text="{Binding Label,ElementName=root}" Grid.Row="1"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding Count,ElementName=root}" FontSize="50" HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding Label,ElementName=root}" Grid.Row="1" HorizontalAlignment="Center"/>
+        <Rectangle Grid.RowSpan="2" Grid.Column="2" Fill="Black" Visibility="{x:Bind converter:ConverterHeler.VisibleIf(HasRightBorder)}"/>
     </Grid>
 </UserControl>

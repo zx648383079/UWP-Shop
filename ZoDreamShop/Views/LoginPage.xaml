@@ -6,10 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:my="using:ZoDream.Shop.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid>
+        <Grid Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
@@ -19,22 +20,75 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <Image />
-            <Button Content="Button" Grid.Row="1"/>
-            <Button Content="Button" Grid.Row="2"/>
-            <TextBlock Grid.Row="3" Text="TextBlock"/>
+            <Image Source="/Assets/logo.png" Stretch="None"/>
+            <Button Content="手机号登录" Grid.Row="1" Background="#b4282d" Foreground="White" Margin="10,2" HorizontalAlignment="Stretch"/>
+            <Button Content="邮箱登录" Grid.Row="2" Background="White" BorderBrush="#b4282d" BorderThickness="1" Foreground="#b4282d" Margin="10,2" HorizontalAlignment="Stretch"/>
+            <TextBlock Grid.Row="3" Text="手机号快捷注册" HorizontalAlignment="Center" FontFamily="Segoe UI"/>
             <Grid Grid.Row="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="1"/>
                     <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="1"/>
                     <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="1"/>
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
+                <Image Grid.Column="1" Source="/Assets/icon/qq.png" Width="30"/>
+                <Image Grid.Column="3" Source="/Assets/icon/weixin.png" Width="30"/>
+                <Image Grid.Column="5" Source="/Assets/icon/weibo.png" Width="30"/>
+                <Image Grid.Column="7" Source="/Assets/icon/github.png" Width="30"/>
+                <Rectangle Fill="#FFCFCECE" Grid.Column="2"/>
+                <Rectangle Fill="#FFCFCECE" Grid.Column="4"/>
+                <Rectangle Fill="#FFCFCECE" Grid.Column="6"/>
             </Grid>
+        </Grid>
+        <Grid Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="/Assets/logo.png" Stretch="None" />
+            <TextBox Grid.Row="1" PlaceholderText="手机号"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBox PlaceholderText="验证码"/>
+                <my:CountDownButton Grid.Column="1" Label="获取验证码" BorderBrush="Red" BorderThickness="1"/>
+            </Grid>
+            <TextBlock Grid.Row="3" Text="遇到问题？" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Text="使用密码验证登录" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <Button Content="登录" Grid.Row="4" Background="#b4282d" Foreground="White" Margin="10,2" HorizontalAlignment="Stretch"/>
+            <Button Content="其他登录方式" Grid.Row="5" Background="White" BorderBrush="#b4282d" BorderThickness="1" Foreground="#b4282d" Margin="10,2" HorizontalAlignment="Stretch"/>
+
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="/Assets/logo.png" Stretch="None" />
+            <TextBox Grid.Row="1" PlaceholderText="请输入账号"/>
+            <TextBox PlaceholderText="请输入密码" Grid.Row="2"/>
+            <TextBlock Grid.Row="3" Text="注册账号" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Text="忘记密码" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <Button Content="登录" Grid.Row="4" Background="#b4282d" Foreground="White" Margin="10,2" HorizontalAlignment="Stretch"/>
+            <Button Content="其他登录方式" Grid.Row="5" Background="White" BorderBrush="#b4282d" BorderThickness="1" Foreground="#b4282d" Margin="10,2" HorizontalAlignment="Stretch"/>
+
         </Grid>
     </Grid>
 </Page>

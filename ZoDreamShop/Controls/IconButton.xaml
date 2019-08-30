@@ -22,7 +22,7 @@
             <RowDefinition Height="1"/>
         </Grid.RowDefinitions>
         <FontIcon Glyph="{Binding Icon,ElementName=root}" FontFamily="Segoe MDL2 Assets" FontSize="{Binding FontSize,ElementName=root}"/>
-        <TextBlock Text="{Binding Label,ElementName=root}" Grid.Column="1" FontSize="{Binding FontSize,ElementName=root}"/>
+        <TextBlock Text="{Binding Label,ElementName=root}" VerticalAlignment="Center" Grid.Column="1" FontSize="{Binding FontSize,ElementName=root}"/>
 
         <Rectangle Grid.RowSpan="2" Grid.Column="2" Fill="Black" Visibility="{x:Bind converter:ConverterHeler.VisibleIf(HasRightBorder)}"/>
         <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Fill="Black" Visibility="{x:Bind converter:ConverterHeler.VisibleIf(HasBottomBorder)}"/>

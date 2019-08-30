@@ -36,7 +36,7 @@
         <Grid Height="176" Background="#05a6b1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <controls:ImageEx Name="Avatar"
                               IsCacheEnabled="True"
@@ -45,11 +45,11 @@
                                        Style="{StaticResource RoundStyle}" 
                                Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBlock Name="TipTb" Text="ZoDream" 
-                   Grid.Row="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                   Grid.Row="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Grid>
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1" Background="#f4f4f4">
             <StackPanel>
-                <Grid>
+                <Grid x:Name="topMenu" Background="White">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -57,7 +57,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <my:IconButton Icon="&#xE719;" Label="订单" HasRightBorder="True"/>
+                    <my:IconButton Icon="&#xE719;" Label="订单" Height="40" HasRightBorder="True"/>
                     <my:IconButton Icon="&#xE735;" Label="关注" Grid.Column="1" HasRightBorder="True"/>
                     <my:IconButton Icon="&#xE7E7;" Label="消息" Grid.Column="2" HasRightBorder="True"/>
                     <my:IconButton Icon="&#xE83D;" Label="安全" Grid.Column="3" HasRightBorder="True"/>
@@ -72,12 +72,12 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <my:IconButton Icon="&#xE8C7;" Label="待付款" HasRightBorder="True" HasBottomBorder="True"/>
-                    <my:IconButton Icon="&#xEA5E;" Label="待收货" Grid.Column="1" HasBottomBorder="True"/>
-                    <my:IconButton Icon="&#xE8DF;" Label="待评价" Grid.Row="1" HasRightBorder="True"/>
-                    <my:IconButton Icon="&#xE7FD;" Label="退换货" Grid.Row="1" Grid.Column="1"/>
+                    <my:IconButton Icon="&#xE8C7;" Height="80" FontSize="30" Label="待付款" HasRightBorder="True" HasBottomBorder="True"/>
+                    <my:IconButton Icon="&#xEA5E;" Height="80" FontSize="30" Label="待收货" Grid.Column="1" HasBottomBorder="True"/>
+                    <my:IconButton Icon="&#xE8DF;" Height="80" FontSize="30" Label="待评价" Grid.Row="1" HasRightBorder="True"/>
+                    <my:IconButton Icon="&#xE7FD;" Height="80" FontSize="30" Label="退换货" Grid.Row="1" Grid.Column="1"/>
                 </Grid>
-                <my:IconMenuItem Icon="&#xE8C7;" Label="签到"/>
+                <my:IconMenuItem Icon="&#xE8C7;" Label="签到" Height="40" Background="White"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -85,15 +85,15 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <my:NumberButton Label="余额"/>
-                    <my:NumberButton Label="积分" Grid.Column="1"/>
-                    <my:NumberButton Label="红包" Grid.Column="2"/>
+                    <my:NumberButton Label="余额" HasRightBorder="True"/>
+                    <my:NumberButton Label="积分" Grid.Column="1" HasRightBorder="True"/>
+                    <my:NumberButton Label="红包" Grid.Column="2" HasRightBorder="True"/>
                     <my:NumberButton Label="优惠券" Grid.Column="3"/>
                 </Grid>
-                <my:IconMenuItem Icon="&#xE8C7;" Label="我的收货地址"/>
-                <my:IconMenuItem Icon="&#xE8C7;" Label="我的足迹"/>
-                <my:IconMenuItem Icon="&#xE8C7;" Label="我的推荐"/>
-                <my:IconMenuItem Icon="&#xE8C7;" Label="帮助"/>
+                <my:IconMenuItem Icon="&#xE8C7;" Height="40" Background="White" Label="我的收货地址" HasBottomBorder="True"/>
+                <my:IconMenuItem Icon="&#xE8C7;" Height="40" Background="White" Label="我的足迹" HasBottomBorder="True"/>
+                <my:IconMenuItem Icon="&#xE8C7;" Height="40" Background="White" Label="我的推荐" HasBottomBorder="True"/>
+                <my:IconMenuItem Icon="&#xE8C7;" Height="40" Background="White" Label="帮助"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

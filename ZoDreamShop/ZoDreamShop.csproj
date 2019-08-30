@@ -118,6 +118,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CountDownButton.xaml.cs">
+      <DependentUpon>CountDownButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,7 @@
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\IncrementalLoadingCollection.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Views\AuthorizePage.xaml.cs">
       <DependentUpon>AuthorizePage.xaml</DependentUpon>
@@ -175,6 +179,53 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\icon\add.png" />
+    <Content Include="Assets\icon\bookmark.png" />
+    <Content Include="Assets\icon\briefcase.png" />
+    <Content Include="Assets\icon\card.png" />
+    <Content Include="Assets\icon\cardvip.png" />
+    <Content Include="Assets\icon\cart.png" />
+    <Content Include="Assets\icon\cart_red.png" />
+    <Content Include="Assets\icon\check.png" />
+    <Content Include="Assets\icon\chevron-left.png" />
+    <Content Include="Assets\icon\chevron-right.png" />
+    <Content Include="Assets\icon\cog.png" />
+    <Content Include="Assets\icon\collect.png" />
+    <Content Include="Assets\icon\collect1.png" />
+    <Content Include="Assets\icon\collect2.png" />
+    <Content Include="Assets\icon\comment-dots.png" />
+    <Content Include="Assets\icon\ellipsis-h.png" />
+    <Content Include="Assets\icon\exchange.png" />
+    <Content Include="Assets\icon\gift.png" />
+    <Content Include="Assets\icon\github.png" />
+    <Content Include="Assets\icon\help.png" />
+    <Content Include="Assets\icon\history.png" />
+    <Content Include="Assets\icon\home.png" />
+    <Content Include="Assets\icon\home_red.png" />
+    <Content Include="Assets\icon\i-card.png" />
+    <Content Include="Assets\icon\icon_arrow.png" />
+    <Content Include="Assets\icon\icon_loading.png" />
+    <Content Include="Assets\icon\idcard.png" />
+    <Content Include="Assets\icon\invoice.png" />
+    <Content Include="Assets\icon\kefufill.png" />
+    <Content Include="Assets\icon\map-marker-alt.png" />
+    <Content Include="Assets\icon\message.png" />
+    <Content Include="Assets\icon\money.png" />
+    <Content Include="Assets\icon\qq.png" />
+    <Content Include="Assets\icon\share.png" />
+    <Content Include="Assets\icon\shield-alt.png" />
+    <Content Include="Assets\icon\shipping-fast.png" />
+    <Content Include="Assets\icon\sign-out-alt.png" />
+    <Content Include="Assets\icon\th.png" />
+    <Content Include="Assets\icon\th_red.png" />
+    <Content Include="Assets\icon\trash.png" />
+    <Content Include="Assets\icon\user.png" />
+    <Content Include="Assets\icon\user_red.png" />
+    <Content Include="Assets\icon\wallet.png" />
+    <Content Include="Assets\icon\weibo.png" />
+    <Content Include="Assets\icon\weixin.png" />
+    <Content Include="Assets\icon\withdrawal.png" />
+    <Content Include="Assets\logo.png" />
     <Content Include="Assets\Square150x150Logo.scale-100.png" />
     <Content Include="Assets\Square150x150Logo.scale-400.png" />
     <Content Include="Assets\Square310x310Logo.scale-200.png" />
@@ -199,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\CountDownButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\IconButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -266,7 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.8</Version>
+      <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
       <Version>5.1.1</Version>
