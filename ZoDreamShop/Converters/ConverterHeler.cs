@@ -45,5 +45,16 @@ namespace ZoDream.Shop.Converters
 
         public static Visibility CollapsedIfEmpty(ObservableCollection<Product> value)
             => CollapsedIf(value == null || value.Count < 1);
+
+        public static Visibility Visible0(int value) =>
+            CollapsedIf(value != 0);
+        public static Visibility Visible1(int value) =>
+            CollapsedIf(value != 1);
+        public static Visibility Visible2(int value) =>
+            CollapsedIf(value != 2);
+        public static Visibility Visible3(int value) =>
+            CollapsedIf(value != 3);
+        public static Visibility Visible4(int value) =>
+            CollapsedIf(value != 4);
     }
 }

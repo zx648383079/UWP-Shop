@@ -29,7 +29,7 @@ namespace ZoDream.Shop.Views
             this.InitializeComponent();
         }
 
-        public CategoryViewModel ViewModel => new CategoryViewModel();
+        public CategoryViewModel ViewModel { get; } = new CategoryViewModel();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -37,9 +37,6 @@ namespace ZoDream.Shop.Views
             //ViewModel.LoadLeftAsync();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ViewModel.ChangeMenu(((ListBox)sender).SelectedItem as Category);
-        }
+        
     }
 }

@@ -5,6 +5,7 @@
     xmlns:local="using:ZoDream.Shop.Styles">
 
     <converter:ImageConverter x:Key="ImgConverter"/>
+    <converter:PriceConverter x:Key="PriceConverter"/>
 
     <Style TargetType="TextBlock" x:Key="HeaderTitle">
         <Setter Property="HorizontalAlignment" Value="Center"/>

@@ -24,7 +24,7 @@ namespace ZoDream.Shop.Converters
                     imageUrl = string.Concat("ms-appx:///", imageUrl);
                 }
             }
-            return imageUrl;
+            return new BitmapImage(new Uri(imageUrl, UriKind.Absolute));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

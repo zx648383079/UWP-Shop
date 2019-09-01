@@ -11,52 +11,27 @@
     <Grid>
         <ScrollViewer
             x:Name="contentSV"
-            Grid.Row="1"
-            Padding="20,0,0,0"
             IsTabStop="False"
             UseSystemFocusVisuals="False"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <StackPanel HorizontalAlignment="Left">
-                <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
-                    Margin="0,4,0,0"
-                    FontWeight="Normal"
-                    Text="Theme Mode" />
-                <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
-                    <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" Content="Light" />
-                    <RadioButton Tag="Dark" Checked="OnThemeRadioButtonChecked" Content="Dark" />
-                    <RadioButton Tag="Default" Checked="OnThemeRadioButtonChecked" Content="Use system setting" />
-                </StackPanel>
-                <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
-                    Margin="0,40,0,0"
-                    FontWeight="Normal"
-                    Text="About" />
-                <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
-                    <Paragraph>
-                        This app is the interactive companion to the
-                        <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink> .
-                        The source code to this app is available on
-                        <Hyperlink NavigateUri="https://github.com/Microsoft/Xaml-Controls-Gallery">
-                            https://github.com/Microsoft/Xaml-Controls-Gallery
-                        </Hyperlink> .
-                    </Paragraph>
-                    <Paragraph Margin="0,10,0,0">
-                        To clone the source repository:
-                    </Paragraph>
-                    <Paragraph Margin="20,10,0,10">
-                        git clone https://github.com/Microsoft/Xaml-Controls-Gallery
-                    </Paragraph>
-                    <Paragraph>
-                        To contact the authors,
-                        <Hyperlink NavigateUri="mailto:ControlsGallery@microsoft.com">mailto:ControlsGallery@microsoft.com</Hyperlink> .
-                    </Paragraph>
-                </RichTextBlock>
-                <TextBlock Margin="0,10,0,0">
-                    Version: 
-                    <Run Text="{x:Bind Version}" />
-                </TextBlock>
+            <StackPanel HorizontalAlignment="Stretch">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                </Grid>
             </StackPanel>
         </ScrollViewer>
     </Grid>

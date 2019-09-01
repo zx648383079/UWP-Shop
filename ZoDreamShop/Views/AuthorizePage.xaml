@@ -46,14 +46,16 @@
         <controls:ImageEx Name="Avatar"
                                Grid.Row="1" Grid.Column="1"
                               IsCacheEnabled="True"
-                                       Source="/Assets/zx.jpg"
+                                       Source="{x:Bind ViewModel.User.Avatar,Mode=OneWay}"
                                        PlaceholderSource="/Assets/zx.jpg"
                                        Style="{StaticResource RoundStyle}"/>
         <TextBlock Name="TipTb" Text="正在授权电脑端登录" 
                    Grid.Column="1" Grid.Row="2" TextAlignment="Center"/>
         <Button Content="确认授权" 
+                Tapped="Button_Tapped"
                 Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <Button Content="取消授权" 
+                Tapped="CancelButton_Tapped"
                 Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 
     </Grid>

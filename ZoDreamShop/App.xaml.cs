@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -16,8 +17,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ZoDream.Models;
 using ZoDream.Repository;
 using ZoDream.Repository.Rest;
+using ZoDream.Shop.Helpers;
 using ZoDream.Shop.ViewModels;
 
 namespace ZoDream.Shop
@@ -82,7 +85,8 @@ namespace ZoDream.Shop
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             UseRest();
-            Frame rootFrame = Window.Current.Content as Frame;
+            _ = refreshTokenAsync();
+            var rootFrame = Window.Current.Content as Frame;
 
             // 不要在窗口已包含内容时重复应用程序初始化，
             // 只需确保窗口处于活动状态
@@ -140,7 +144,48 @@ namespace ZoDream.Shop
             deferral.Complete();
         }
 
+        private async Task refreshTokenAsync()
+        {
+            if (string.IsNullOrEmpty(Constants.Token))
+            {
+                var token = AppData.GetValue<string>(Constants.TOKEN_KEY);
+                if (string.IsNullOrWhiteSpace(token))
+                {
+                    return;
+                }
+                Constants.Token = token;
+            }
+            var user = await Repository.Users.ProfileAsync();
+            if (user == null)
+            {
+                Logout();
+                return;
+            }
+            ViewModel.User = user;
+        }
+
         public static void UseRest() =>
             Repository = new RestRepository();
+
+
+
+        public static bool IsLogin()
+        {
+            return !string.IsNullOrEmpty(Constants.Token);
+        }
+
+        public static void Login(User user)
+        {
+            Constants.Token = user.Token;
+            ViewModel.User = user;
+            AppData.SetValue(Constants.TOKEN_KEY, user.Token);
+        }
+
+        public static void Logout()
+        {
+            Constants.Token = string.Empty;
+            ViewModel.User = null;
+            AppData.Remove(Constants.TOKEN_KEY);
+        }
     }
 }

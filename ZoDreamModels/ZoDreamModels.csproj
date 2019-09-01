@@ -129,6 +129,8 @@
     <Compile Include="HomeProduct.cs" />
     <Compile Include="InvoiceLog.cs" />
     <Compile Include="InvoiceTitle.cs" />
+    <Compile Include="LoginForm.cs" />
+    <Compile Include="LoginQr.cs" />
     <Compile Include="Paging.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="User.cs" />

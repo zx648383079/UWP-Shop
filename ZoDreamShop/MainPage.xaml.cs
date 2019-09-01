@@ -30,7 +30,7 @@ namespace ZoDream.Shop
         }
 
         public Frame AppFrame => frame;
-        public MainViewModel ViewModel => App.ViewModel;
+        public MainViewModel ViewModel = App.ViewModel;
 
         private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
         {
@@ -51,7 +51,7 @@ namespace ZoDream.Shop
                 label == "分类" ? typeof(CategoryPage) :
                 label == "扫一扫" ? typeof(ScanPage) : 
                 label == "购物车" ? typeof(CartPage) :
-                label == "我的" ? typeof(MemberPage) :
+                label == "我的" ? (App.IsLogin() ? typeof(MemberPage) : typeof(LoginPage)) :
                 typeof(HomePage);
             if (pageType != null && pageType != AppFrame.CurrentSourcePageType)
             {
@@ -103,12 +103,12 @@ namespace ZoDream.Shop
 
         private void SearchBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            ViewModel.LoadTipAsync(sender.Text);
+            _ = ViewModel.LoadTipAsync(sender.Text);
         }
 
         private void NavigationViewItem_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            AppFrame.Navigate(typeof(MemberPage));
+            AppFrame.Navigate(App.IsLogin() ? typeof(MemberPage) : typeof(LoginPage));
         }
     }
 }

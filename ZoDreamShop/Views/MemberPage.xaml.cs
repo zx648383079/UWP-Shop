@@ -28,11 +28,12 @@ namespace ZoDream.Shop.Views
             this.InitializeComponent();
         }
 
-        public MemberViewModel ViewModel => new MemberViewModel();
+        public MemberViewModel ViewModel { get; private set; } = new MemberViewModel();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            ViewModel.User = App.ViewModel.User;
         }
     }
 }

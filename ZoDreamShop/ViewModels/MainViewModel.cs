@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZoDream.Models;
 
 namespace ZoDream.Shop.ViewModels
 {
@@ -24,6 +25,15 @@ namespace ZoDream.Shop.ViewModels
             get => _isLoading;
             set => Set(ref _isLoading, value);
         }
+
+        private User _user;
+
+        public User User
+        {
+            get { return _user; }
+            set { Set(ref _user, value); }
+        }
+
 
         private ObservableCollection<string> tips = new ObservableCollection<string>();
 

@@ -136,7 +136,7 @@ namespace ZoDream.Repository.Rest
 
         public RestClient SetBody(JsonStringContent body)
         {
-            return SetBody(body);
+            return SetBody(body as StringContent);
         }
 
         public RestClient SetBody(JContainer body)
@@ -197,7 +197,7 @@ namespace ZoDream.Repository.Rest
                 if (responseMessage.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     var content = await responseMessage.Content.ReadAsStringAsync();
-                    //Log.Error($"status code:{responseMessage.StatusCode}; {content}");
+                    Debug.WriteLine($"status code:{responseMessage.StatusCode}; {content}");
                     failure?.Invoke(responseMessage);
                     return string.Empty;
                 }
@@ -249,7 +249,7 @@ namespace ZoDream.Repository.Rest
             var builder = new StringBuilder();
             foreach (var content in Queries)
             {
-                builder.Append($"{ System.Net.WebUtility.HtmlEncode(content.Key)}={ System.Net.WebUtility.HtmlEncode(content.Value)}&");
+                builder.Append($"{ System.Net.WebUtility.UrlEncode(content.Key)}={ System.Net.WebUtility.UrlEncode(content.Value)}&");
             }
             var data = builder.ToString();
             return data.Substring(0, data.Length - 1);

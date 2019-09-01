@@ -22,7 +22,41 @@ namespace ZoDream.Repository.Rest
         public async Task<User> GetAsync(uint id) =>
             await _http.GetAsync<User>($"customer/{id}");
 
+        public async Task<User> ProfileAsync() =>
+            await _http.GetAsync<User>("auth/user");
+
         public async Task DeleteAsync(uint id) =>
             await _http.DeleteAsync("customer", id);
+
+        public async Task<User> LoginAsync(LoginForm login) =>
+            await _http.PostAsync<LoginForm, User>("auth/login", login);
+
+        public async Task<User> RegisterAsync(LoginForm login) =>
+            await _http.PostAsync<LoginForm, User>("auth/register", login);
+
+        public async Task<ResponseDataOne<bool>> LogoutAsync() =>
+            await _http.GetAsync<ResponseDataOne<bool>>("auth/user");
+
+        public async Task<ResponseDataOne<bool>> SendCodeAsync(LoginForm login) =>
+            await _http.PostAsync<LoginForm, ResponseDataOne<bool>>("auth/send_code", login);
+
+        public async Task<LoginQr> LoginQrAsync(string token)
+        {
+            return await _http.GetAsync<LoginQr>("auth/qr", "token", token);
+        }
+
+        public async Task<LoginQr> AuthorizeAsync(string token, bool confirm = false, bool reject = false)
+        {
+            var data = new Dictionary<string, string>();
+            data.Add("token", token);
+            if (confirm)
+            {
+                data.Add("confirm", "true");
+            } else if (reject)
+            {
+                data.Add("reject", "true");
+            }
+            return await _http.GetAsync<LoginQr>("auth/qr/authorize", data);
+        }
     }
 }

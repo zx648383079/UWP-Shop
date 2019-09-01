@@ -1,11 +1,6 @@
 ﻿using Microsoft.Toolkit.Uwp.Helpers;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 using ZoDream.Models;
 
 namespace ZoDream.Shop.ViewModels
@@ -71,6 +66,11 @@ namespace ZoDream.Shop.ViewModels
                 
                 IsLoading = false;
             });
+        }
+
+        public void LeftChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ChangeMenu(((ListBox)sender).SelectedItem as Category);
         }
 
         public async void ChangeMenu(Category category)

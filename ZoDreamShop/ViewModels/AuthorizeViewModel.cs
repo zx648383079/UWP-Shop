@@ -7,9 +7,9 @@ using ZoDream.Models;
 
 namespace ZoDream.Shop.ViewModels
 {
-    public class MemberViewModel : BindableBase
+    public class AuthorizeViewModel : BindableBase
     {
-        public MemberViewModel()
+        public AuthorizeViewModel()
         {
             IsLoading = false;
         }
@@ -32,5 +32,14 @@ namespace ZoDream.Shop.ViewModels
             get { return _user; }
             set { Set(ref _user, value); }
         }
+
+        private string _token;
+
+        public string Token
+        {
+            get => _token;
+            set => Set(ref _token, value);
+        }
+
     }
 }

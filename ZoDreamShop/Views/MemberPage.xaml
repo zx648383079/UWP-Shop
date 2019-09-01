@@ -40,11 +40,11 @@
             </Grid.RowDefinitions>
             <controls:ImageEx Name="Avatar"
                               IsCacheEnabled="True"
-                                       Source="/Assets/zx.jpg"
+                                       Source="{x:Bind ViewModel.User.Avatar,Mode=OneWay}"
                                        PlaceholderSource="/Assets/zx.jpg"
                                        Style="{StaticResource RoundStyle}" 
                                Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Name="TipTb" Text="ZoDream" 
+            <TextBlock Name="TipTb" Text="{x:Bind ViewModel.User.Name,Mode=OneWay}" 
                    Grid.Row="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Grid>
         <ScrollViewer Grid.Row="1" Background="#f4f4f4">

@@ -10,7 +10,8 @@
     d:DesignHeight="40"
     d:DesignWidth="100">
 
-    <Grid>
+    <Grid BorderBrush="{Binding BorderBrush,ElementName=root}"
+          BorderThickness="{Binding BorderThickness,ElementName=root}">
         <TextBlock Text="{Binding Label,ElementName=root}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>
