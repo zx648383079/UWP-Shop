@@ -11,7 +11,32 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid Visibility="{x:Bind converter:ConverterHeler.Visible0(ViewModel.Mode),Mode=OneWay}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="mid.Width" Value="8*"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="400"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="mid.Width" Value="300"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition x:Name="mid" Width="8*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Visibility="{x:Bind converter:ConverterHeler.Visible0(ViewModel.Mode),Mode=OneWay}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
@@ -46,7 +71,7 @@
                 <Rectangle Fill="#FFCFCECE" Grid.Column="6"/>
             </Grid>
         </Grid>
-        <Grid Visibility="{x:Bind converter:ConverterHeler.Visible1(ViewModel.Mode),Mode=OneWay}">
+        <Grid Grid.Column="1" Visibility="{x:Bind converter:ConverterHeler.Visible1(ViewModel.Mode),Mode=OneWay}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
@@ -74,7 +99,7 @@
             <Button Content="其他登录方式"  Tapped="Button_Tapped" Grid.Row="5" Background="White" BorderBrush="#b4282d" BorderThickness="1" Foreground="#b4282d" Margin="10,2" HorizontalAlignment="Stretch"/>
 
         </Grid>
-        <Grid Visibility="{x:Bind converter:ConverterHeler.Visible2(ViewModel.Mode),Mode=OneWay}">
+        <Grid Grid.Column="1" Visibility="{x:Bind converter:ConverterHeler.Visible2(ViewModel.Mode),Mode=OneWay}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
