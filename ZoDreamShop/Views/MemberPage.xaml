@@ -77,7 +77,7 @@
                     <my:IconButton Icon="&#xE8DF;" Height="80" FontSize="30" Label="待评价" Grid.Row="1" HasRightBorder="True"/>
                     <my:IconButton Icon="&#xE7FD;" Height="80" FontSize="30" Label="退换货" Grid.Row="1" Grid.Column="1"/>
                 </Grid>
-                <my:IconMenuItem Icon="&#xE8C7;" Label="签到" Height="40" Background="White"/>
+                <my:IconMenuItem Icon="&#xE8C7;" Label="我的钱包" Height="40" Background="White"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -90,6 +90,7 @@
                     <my:NumberButton Label="红包" Grid.Column="2" HasRightBorder="True"/>
                     <my:NumberButton Label="优惠券" Grid.Column="3"/>
                 </Grid>
+                <my:IconMenuItem Icon="&#xE8C7;" Height="40" Background="White" Label="签到" Tapped="IconMenuItem_Tapped" HasBottomBorder="True"/>
                 <my:IconMenuItem Icon="&#xE8C7;" Height="40" Background="White" Label="我的收货地址" HasBottomBorder="True"/>
                 <my:IconMenuItem Icon="&#xE8C7;" Height="40" Background="White" Label="我的足迹" HasBottomBorder="True"/>
                 <my:IconMenuItem Icon="&#xE8C7;" Height="40" Background="White" Label="我的推荐" HasBottomBorder="True"/>
