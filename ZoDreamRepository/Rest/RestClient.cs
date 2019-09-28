@@ -144,6 +144,25 @@ namespace ZoDream.Repository.Rest
             return SetBody(new JsonStringContent(body.ToString()));
         }
 
+        public async Task<T> ExecuteAsync<T>(Action<HttpException> action)
+        {
+            return await ExecuteAsync<T>(null, async res =>
+            {
+                if (res == null)
+                {
+                    action?.Invoke(new HttpException());
+                    return;
+                }
+                var content = await res.Content.ReadAsStringAsync();
+                if (content.IndexOf("code") <= 0)
+                {
+                    action?.Invoke(new HttpException((int)res.StatusCode, content));
+                    return;
+                }
+                action?.Invoke(JsonConvert.DeserializeObject<HttpException>(content));
+            });
+        }
+
         public async Task<T> ExecuteAsync<T>(Action<HttpResponseMessage> succes = null, Action<HttpResponseMessage> failure = null)
         {
             var content = await ExecuteAsync(succes, failure);

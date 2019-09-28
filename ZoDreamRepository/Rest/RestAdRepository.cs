@@ -16,13 +16,13 @@ namespace ZoDream.Repository.Rest
             _http = new HttpHelper(baseUrl);
         }
 
-        public async Task<ResponseData<Ad>> GetAsync(string position) 
+        public async Task<ResponseData<Ad>> GetAsync(string position, Action<HttpException> action) 
             => await _http.GetAsync<ResponseData<Ad>>("shop/ad", "position", position);
 
-        public async Task<ResponseData<Ad>> GetAsync(int position)
-            => await GetAsync(position.ToString());
+        public async Task<ResponseData<Ad>> GetAsync(int position, Action<HttpException> action)
+            => await GetAsync(position.ToString(), action);
 
-        public async Task<ResponseData<Ad>> GetBannersAsync()
+        public async Task<ResponseData<Ad>> GetBannersAsync(Action<HttpException> action)
             => await _http.GetAsync<ResponseData<Ad>>("shop/ad/banner");
     }
 }

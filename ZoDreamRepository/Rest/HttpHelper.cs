@@ -10,6 +10,8 @@ namespace ZoDream.Repository.Rest
 {
     public class HttpHelper
     {
+
+
         /// <summary>           
         /// The Base URL for the API.
         /// /// </summary>
@@ -23,29 +25,29 @@ namespace ZoDream.Repository.Rest
         /// <summary>
         /// Makes an HTTP GET request to the given controller and returns the deserialized response content.
         /// </summary>
-        public async Task<TResult> GetAsync<TResult>(string controller)
+        public async Task<TResult> GetAsync<TResult>(string controller, Action<HttpException> action)
         {
             using (var client = CreateHttp())
             {
-                var obj = await client.AppendPath(controller).ExecuteAsync<TResult>();
+                var obj = await client.AppendPath(controller).ExecuteAsync<TResult>(action);
                 return obj;
             }
         }
 
-        public async Task<TResult> GetAsync<TResult>(string controller, string key, object value)
+        public async Task<TResult> GetAsync<TResult>(string controller, string key, object value, Action<HttpException> action)
         {
             using (var client = CreateHttp())
             {
-                var obj = await client.AppendPath(controller).AddQuery(key, value.ToString()).ExecuteAsync<TResult>();
+                var obj = await client.AppendPath(controller).AddQuery(key, value.ToString()).ExecuteAsync<TResult>(action);
                 return obj;
             }
         }
 
-        public async Task<TResult> GetAsync<TResult>(string controller, Dictionary<string, string> parameters)
+        public async Task<TResult> GetAsync<TResult>(string controller, Dictionary<string, string> parameters, Action<HttpException> action)
         {
             using (var client = CreateHttp())
             {
-                var obj = await client.AppendPath(controller).AddQueries(parameters).ExecuteAsync<TResult>();
+                var obj = await client.AppendPath(controller).AddQueries(parameters).ExecuteAsync<TResult>(action);
                 return obj;
             }
         }
@@ -54,11 +56,11 @@ namespace ZoDream.Repository.Rest
         /// Makes an HTTP POST request to the given controller with the given object as the body.
         /// Returns the deserialized response content.
         /// </summary>
-        public async Task<TResult> PostAsync<TRequest, TResult>(string controller, TRequest body)
+        public async Task<TResult> PostAsync<TRequest, TResult>(string controller, TRequest body, Action<HttpException> action)
         {
             using (var client = CreatePostHttp())
             {
-                var obj = await client.AppendPath(controller).SetBody(new JsonStringContent(body)).ExecuteAsync<TResult>();
+                var obj = await client.AppendPath(controller).SetBody(new JsonStringContent(body)).ExecuteAsync<TResult>(action);
                 return obj;
             }
         }
@@ -67,12 +69,12 @@ namespace ZoDream.Repository.Rest
         /// Makes an HTTP DELETE request to the given controller and includes all the given
         /// object's properties as URL parameters. Returns the deserialized response content.
         /// </summary>
-        public async Task DeleteAsync(string controller, uint objectId)
+        public async Task<TResult> DeleteAsync<TRequest, TResult>(string controller, uint objectId, Action<HttpException> action)
         {
             using (var client = CreateHttp())
             {
                 client.Method = HttpMethod.Delete;
-                await client.AppendPath($"{controller}/{objectId}").ExecuteAsync();
+                return await client.AppendPath($"{controller}/{objectId}").ExecuteAsync<TResult>(action);
             }
         }
 
