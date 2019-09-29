@@ -25,7 +25,7 @@ namespace ZoDream.Repository.Rest
         /// <summary>
         /// Makes an HTTP GET request to the given controller and returns the deserialized response content.
         /// </summary>
-        public async Task<TResult> GetAsync<TResult>(string controller, Action<HttpException> action)
+        public async Task<TResult> GetAsync<TResult>(string controller, Action<HttpException> action = null)
         {
             using (var client = CreateHttp())
             {
@@ -34,7 +34,7 @@ namespace ZoDream.Repository.Rest
             }
         }
 
-        public async Task<TResult> GetAsync<TResult>(string controller, string key, object value, Action<HttpException> action)
+        public async Task<TResult> GetAsync<TResult>(string controller, string key, object value, Action<HttpException> action = null)
         {
             using (var client = CreateHttp())
             {
@@ -43,7 +43,7 @@ namespace ZoDream.Repository.Rest
             }
         }
 
-        public async Task<TResult> GetAsync<TResult>(string controller, Dictionary<string, string> parameters, Action<HttpException> action)
+        public async Task<TResult> GetAsync<TResult>(string controller, Dictionary<string, string> parameters, Action<HttpException> action = null)
         {
             using (var client = CreateHttp())
             {
@@ -56,7 +56,7 @@ namespace ZoDream.Repository.Rest
         /// Makes an HTTP POST request to the given controller with the given object as the body.
         /// Returns the deserialized response content.
         /// </summary>
-        public async Task<TResult> PostAsync<TRequest, TResult>(string controller, TRequest body, Action<HttpException> action)
+        public async Task<TResult> PostAsync<TRequest, TResult>(string controller, TRequest body, Action<HttpException> action = null)
         {
             using (var client = CreatePostHttp())
             {
@@ -69,7 +69,7 @@ namespace ZoDream.Repository.Rest
         /// Makes an HTTP DELETE request to the given controller and includes all the given
         /// object's properties as URL parameters. Returns the deserialized response content.
         /// </summary>
-        public async Task<TResult> DeleteAsync<TRequest, TResult>(string controller, uint objectId, Action<HttpException> action)
+        public async Task<TResult> DeleteAsync<TResult>(string controller, uint objectId, Action<HttpException> action = null)
         {
             using (var client = CreateHttp())
             {

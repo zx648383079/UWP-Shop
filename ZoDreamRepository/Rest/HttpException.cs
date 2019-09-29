@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZoDream.Repository.Rest
 {
-    public class HttpException: Exception
+    public class HttpException
     {
         public int Code { get; set; } = 0;
 
@@ -14,19 +14,22 @@ namespace ZoDream.Repository.Rest
 
         public string Description { get; set; }
 
+        public string Message { get; set; }
+
         public HttpException()
         {
 
         }
 
-        public HttpException(string message): base(message)
+        public HttpException(string message)
         {
-
+            Message = message;
         }
 
-        public HttpException(int code, string message): base(message)
+        public HttpException(int code, string message)
         {
             Code = code;
+            Message = message;
         }
 
 

@@ -69,7 +69,10 @@ namespace ZoDream.Shop.ViewModels
 
         public async Task<bool> LoginAsync()
         {
-            var user = await App.Repository.Users.LoginAsync(new Models.LoginForm() { Email = Email, Password = Password });
+            var user = await App.Repository.Users.LoginAsync(new Models.LoginForm() { Email = Email, Password = Password }, res =>
+            {
+                Toast.ShowWarning(res.Message);
+            });
             if (user == null)
             {
                 return false;

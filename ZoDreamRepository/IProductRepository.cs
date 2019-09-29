@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZoDream.Models;
+using ZoDream.Repository.Rest;
 
 namespace ZoDream.Repository
 {
@@ -12,19 +13,19 @@ namespace ZoDream.Repository
         /// <summary>
         /// Returns all customers. 
         /// </summary>
-        Task<Page<Product>> GetAsync(Dictionary<string, string> args);
+        Task<Page<Product>> GetAsync(Dictionary<string, string> args, Action<HttpException> action = null);
 
-        Task<Product> GetAsync(int id);
+        Task<Product> GetAsync(int id, Action<HttpException> action = null);
 
-        Task<ResponseData<Product>> GetRecommendAsync(int id);
+        Task<ResponseData<Product>> GetRecommendAsync(int id, Action<HttpException> action = null);
 
-        Task<HomeProduct> GetHomeAsync();
+        Task<HomeProduct> GetHomeAsync(Action<HttpException> action = null);
 
-        Task<ResponseData<string>> GetHotKeywordsAsync();
+        Task<ResponseData<string>> GetHotKeywordsAsync(Action<HttpException> action = null);
 
-        Task<ResponseData<string>> GetTipsAsync(string keywords);
+        Task<ResponseData<string>> GetTipsAsync(string keywords, Action<HttpException> action = null);
 
-        Task<ResponseData<string>> GetSubtotalAsync();
+        Task<ResponseData<string>> GetSubtotalAsync(Action<HttpException> action = null);
 
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZoDream.Models;
+using ZoDream.Repository.Rest;
 
 namespace ZoDream.Repository
 {
@@ -12,25 +13,25 @@ namespace ZoDream.Repository
         /// <summary>
         /// Returns all customers. 
         /// </summary>
-        Task<IEnumerable<User>> GetAsync();
+        Task<IEnumerable<User>> GetAsync(Action<HttpException> action = null);
 
-        Task<User> GetAsync(uint id);
+        Task<User> GetAsync(uint id, Action<HttpException> action = null);
 
-        Task<User> ProfileAsync();
+        Task<User> ProfileAsync(Action<HttpException> action = null);
 
-        Task DeleteAsync(uint id);
+        Task<ResponseDataOne<bool>> DeleteAsync(uint id, Action<HttpException> action = null);
 
-        Task<User> LoginAsync(LoginForm login);
+        Task<User> LoginAsync(LoginForm login, Action<HttpException> action = null);
 
-        Task<User> RegisterAsync(LoginForm login);
+        Task<User> RegisterAsync(LoginForm login, Action<HttpException> action = null);
 
-        Task<ResponseDataOne<bool>> LogoutAsync();
+        Task<ResponseDataOne<bool>> LogoutAsync(Action<HttpException> action = null);
 
-        Task<ResponseDataOne<bool>> SendCodeAsync(LoginForm login);
+        Task<ResponseDataOne<bool>> SendCodeAsync(LoginForm login, Action<HttpException> action = null);
 
-        Task<LoginQr> LoginQrAsync(string token);
+        Task<LoginQr> LoginQrAsync(string token, Action<HttpException> action = null);
 
-        Task<LoginQr> AuthorizeAsync(string token, bool confirm = false, bool reject = false);
+        Task<LoginQr> AuthorizeAsync(string token, bool confirm = false, bool reject = false, Action<HttpException> action = null);
 
     }
 }

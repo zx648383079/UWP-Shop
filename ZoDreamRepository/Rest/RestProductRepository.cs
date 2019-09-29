@@ -16,25 +16,25 @@ namespace ZoDream.Repository.Rest
             _http = new HttpHelper(baseUrl);
         }
 
-        public async Task<Page<Product>> GetAsync(Dictionary<string, string> args) 
-            => await _http.GetAsync<Page<Product>>("shop/goods", args);
+        public async Task<Page<Product>> GetAsync(Dictionary<string, string> args, Action<HttpException> action = null) 
+            => await _http.GetAsync<Page<Product>>("shop/goods", args, action);
 
-        public async Task<Product> GetAsync(int id)
-            => await _http.GetAsync<Product>("shop/goods", "id", id);
+        public async Task<Product> GetAsync(int id, Action<HttpException> action = null)
+            => await _http.GetAsync<Product>("shop/goods", "id", id, action);
 
-        public async Task<HomeProduct> GetHomeAsync()
-            => await _http.GetAsync<HomeProduct>("shop/goods/home");
+        public async Task<HomeProduct> GetHomeAsync(Action<HttpException> action = null)
+            => await _http.GetAsync<HomeProduct>("shop/goods/home", action);
 
-        public async Task<ResponseData<string>> GetHotKeywordsAsync()
-            => await _http.GetAsync<ResponseData<string>>("shop/search/keywords");
+        public async Task<ResponseData<string>> GetHotKeywordsAsync(Action<HttpException> action = null)
+            => await _http.GetAsync<ResponseData<string>>("shop/search/keywords", action);
 
-        public async Task<ResponseData<Product>> GetRecommendAsync(int id)
-            => await _http.GetAsync<ResponseData<Product>>("shop/goods/recommend", "id", id);
+        public async Task<ResponseData<Product>> GetRecommendAsync(int id, Action<HttpException> action = null)
+            => await _http.GetAsync<ResponseData<Product>>("shop/goods/recommend", "id", id, action);
 
-        public async Task<ResponseData<string>> GetSubtotalAsync()
-            => await _http.GetAsync<ResponseData<string>>("shop/goods/count");
+        public async Task<ResponseData<string>> GetSubtotalAsync(Action<HttpException> action = null)
+            => await _http.GetAsync<ResponseData<string>>("shop/goods/count", action);
 
-        public async Task<ResponseData<string>> GetTipsAsync(string keywords)
-            => await _http.GetAsync<ResponseData<string>>("shop/search/tips", "keywords", keywords);
+        public async Task<ResponseData<string>> GetTipsAsync(string keywords, Action<HttpException> action = null)
+            => await _http.GetAsync<ResponseData<string>>("shop/search/tips", "keywords", keywords, action);
     }
 }

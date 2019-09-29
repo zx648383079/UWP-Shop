@@ -48,6 +48,20 @@ namespace ZoDream.Shop.Controls
 
 
 
+
+        public string Tip
+        {
+            get { return (string)GetValue(TipProperty); }
+            set { SetValue(TipProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Tip.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TipProperty =
+            DependencyProperty.Register("Tip", typeof(string), typeof(IconMenuItem), new PropertyMetadata(null));
+
+
+
+
         public bool HasBottomBorder
         {
             get { return (bool)GetValue(HasBottomBorderProperty); }

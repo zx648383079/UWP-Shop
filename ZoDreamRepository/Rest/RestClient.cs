@@ -144,7 +144,7 @@ namespace ZoDream.Repository.Rest
             return SetBody(new JsonStringContent(body.ToString()));
         }
 
-        public async Task<T> ExecuteAsync<T>(Action<HttpException> action)
+        public async Task<T> ExecuteAsync<T>(Action<HttpException> action = null)
         {
             return await ExecuteAsync<T>(null, async res =>
             {
@@ -154,7 +154,7 @@ namespace ZoDream.Repository.Rest
                     return;
                 }
                 var content = await res.Content.ReadAsStringAsync();
-                if (content.IndexOf("code") <= 0)
+                if (content.IndexOf("<html") >= 0)
                 {
                     action?.Invoke(new HttpException((int)res.StatusCode, content));
                     return;

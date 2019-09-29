@@ -60,7 +60,7 @@ namespace ZoDream.Shop.Helpers
 
             // 2. provide text
             var toastTextElements = toastXml.GetElementsByTagName("text");
-            toastTextElements[0].AppendChild(toastXml.CreateTextNode(text));
+            toastTextElements[0].AppendChild(toastXml.CreateTextNode(text.Length > 200 ? text.Substring(0, 200): text));
 
             // 3. provide image
             var toastImageAttributes = toastXml.GetElementsByTagName("image");
