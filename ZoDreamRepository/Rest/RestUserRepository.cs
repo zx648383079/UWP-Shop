@@ -58,5 +58,10 @@ namespace ZoDream.Repository.Rest
             }
             return await _http.GetAsync<LoginQr>("auth/qr/authorize", data);
         }
+
+        public async Task<ResponseData<Connect>> GetConnectAsync(Action<HttpException> action = null)
+        {
+            return await _http.GetAsync<ResponseData<Connect>>("shop/account/connect", action);
+        }
     }
 }

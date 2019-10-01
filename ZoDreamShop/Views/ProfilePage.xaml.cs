@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using ZoDream.Shop.Controls;
 using ZoDream.Shop.ViewModels;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -22,9 +21,9 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class MemberPage : Page
+    public sealed partial class ProfilePage : Page
     {
-        public MemberPage()
+        public ProfilePage()
         {
             this.InitializeComponent();
         }
@@ -35,30 +34,6 @@ namespace ZoDream.Shop.Views
         {
             base.OnNavigatedTo(e);
             ViewModel.User = App.ViewModel.User;
-        }
-
-        private void IconMenuItem_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            var label = (sender as IconMenuItem).Label;
-            if (label == "签到")
-            {
-                Frame.Navigate(typeof(CheckInPage));
-            }
-        }
-
-        private void IconButton_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            var label = (sender as IconButton).Label;
-            if (label == "安全")
-            {
-                Frame.Navigate(typeof(Account.CenterPage));
-                return;
-            }
-            if (label == "设置")
-            {
-                Frame.Navigate(typeof(ProfilePage));
-                return;
-            }
         }
     }
 }

@@ -125,6 +125,7 @@
     <Compile Include="ArticleCategory.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="CheckIn.cs" />
+    <Compile Include="Connect.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="HomeProduct.cs" />
     <Compile Include="InvoiceLog.cs" />

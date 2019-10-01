@@ -6,14 +6,40 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:ZoDream.Shop.Controls"
+    xmlns:converter="using:ZoDream.Shop.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <converter:IconConverter x:Key="IconConverter"/>
+    </Page.Resources>
+    
     <Grid>
-        <ScrollViewer>
-            <StackPanel Orientation="Vertical">
-                <controls:IconMenuItem/>
-            </StackPanel>
-        </ScrollViewer>
+        <ListBox ItemsSource="{x:Bind ViewModel.Items}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <controls:IconMenuItem
+                        Height="30"
+                        HasBottomBorder="True"
+                        Label="{Binding Path=Name}"
+                        Tip="{Binding Path=Nickname}"
+                        Icon="{Binding Path=Icon,Converter={StaticResource IconConverter}}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

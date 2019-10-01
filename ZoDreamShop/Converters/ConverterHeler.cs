@@ -56,5 +56,38 @@ namespace ZoDream.Shop.Converters
             CollapsedIf(value != 3);
         public static Visibility Visible4(int value) =>
             CollapsedIf(value != 4);
+
+
+        public static string Icon(string name)
+        {
+            switch (name)
+            {
+                case "qq":
+                case "fa-qq":
+                    return "\ue69e";
+                case "weixin":
+                case "wechat":
+                case "fa-weixin":
+                    return "\ue600";
+                case "alipay":
+                case "fa-alipay":
+                    return "\ue602";
+                case "weibo":
+                case "fa-weibo":
+                    return "\ue6b4";
+                case "paypal":
+                case "fa-paypal":
+                    return "\ue905";
+                case "github":
+                case "fa-github":
+                    return "\ue691";
+                case "google":
+                case "fa-google":
+                    return "\ue8f1";
+                default:
+                    break;
+            }
+            return "";
+        }
     }
 }

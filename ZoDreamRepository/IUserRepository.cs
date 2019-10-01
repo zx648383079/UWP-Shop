@@ -33,5 +33,6 @@ namespace ZoDream.Repository
 
         Task<LoginQr> AuthorizeAsync(string token, bool confirm = false, bool reject = false, Action<HttpException> action = null);
 
+        Task<ResponseData<Connect>> GetConnectAsync(Action<HttpException> action = null);
     }
 }

@@ -17,9 +17,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ZoDream.Shop.Controls
 {
-    public sealed partial class IconMenuItem : UserControl
+    public sealed partial class TipMenuItem : UserControl
     {
-        public IconMenuItem()
+        public TipMenuItem()
         {
             this.InitializeComponent();
         }
@@ -32,20 +32,7 @@ namespace ZoDream.Shop.Controls
 
         // Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string), typeof(IconMenuItem), new PropertyMetadata(null));
-
-
-
-        public string Icon
-        {
-            get { return (string)GetValue(IconProperty); }
-            set { SetValue(IconProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(string), typeof(IconMenuItem), new PropertyMetadata(null));
-
+            DependencyProperty.Register("Label", typeof(string), typeof(TipMenuItem), new PropertyMetadata(null));
 
 
         public string Tip
@@ -56,7 +43,7 @@ namespace ZoDream.Shop.Controls
 
         // Using a DependencyProperty as the backing store for Tip.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TipProperty =
-            DependencyProperty.Register("Tip", typeof(string), typeof(IconMenuItem), new PropertyMetadata(null));
+            DependencyProperty.Register("Tip", typeof(string), typeof(TipMenuItem), new PropertyMetadata(null));
 
 
 
@@ -69,7 +56,7 @@ namespace ZoDream.Shop.Controls
 
         // Using a DependencyProperty as the backing store for HasBottomBorder.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HasBottomBorderProperty =
-            DependencyProperty.Register("HasBottomBorder", typeof(bool), typeof(IconMenuItem), new PropertyMetadata(false));
+            DependencyProperty.Register("HasBottomBorder", typeof(bool), typeof(TipMenuItem), new PropertyMetadata(false));
 
     }
 }
