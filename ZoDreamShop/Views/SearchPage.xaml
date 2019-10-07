@@ -15,16 +15,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-
-    <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton Icon="Refresh" Label="刷新" Click="AppBarButton_Click"/>
-            <AppBarButton Icon="More" Label="加载更多" Click="AppBarButton_Click"/>
-        </CommandBar>
-    </Page.BottomAppBar>
     <Grid>
         <RefreshContainer x:Name="RefreshBox" RefreshRequested="RefreshContainer_RefreshRequested">
-            <GridView Style="{StaticResource GoodsList}" ItemsSource="{x:Bind ViewModel.Products}">
+            <GridView Style="{StaticResource GoodsList}" ItemsSource="{x:Bind ViewModel.Products}"
+                      IsItemClickEnabled="True" ItemClick="GridView_ItemClick">
             </GridView>
         </RefreshContainer>
         <ProgressBar

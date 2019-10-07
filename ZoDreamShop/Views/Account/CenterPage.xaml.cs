@@ -21,7 +21,7 @@ namespace ZoDream.Shop.Views.Account
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class CenterPage : Page
+    public sealed partial class CenterPage : Page, ISubPage
     {
         public CenterPage()
         {
@@ -30,5 +30,6 @@ namespace ZoDream.Shop.Views.Account
 
         public AccountCenterViewModel ViewModel { get; private set; } = new AccountCenterViewModel();
 
+        public string NavTitile => "账号互联";
     }
 }

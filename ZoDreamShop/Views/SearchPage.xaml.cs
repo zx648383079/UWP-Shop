@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ZoDream.Models;
 using ZoDream.Shop.ViewModels;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -21,7 +22,7 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class SearchPage : Page
+    public sealed partial class SearchPage : Page, ISubPage
     {
         public SearchPage()
         {
@@ -29,6 +30,8 @@ namespace ZoDream.Shop.Views
         }
 
         public SearchViewModel ViewModel { get; } = new SearchViewModel();
+
+        public string NavTitile => "搜索";
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -41,19 +44,10 @@ namespace ZoDream.Shop.Views
             ViewModel.RefreshAsync();
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            switch (((AppBarButton)sender).Label)
-            {
-                case "刷新":
-                    RefreshBox.RequestRefresh();
-                    break;
-                case "加载更多":
-                    ViewModel.MoreAsync(); ;
-                    break;
-                default:
-                    break;
-            }
+            var item = e.ClickedItem as ProductSimple;
+            Frame.Navigate(typeof(Goods.GoodsPage), item.Id);
         }
     }
 }

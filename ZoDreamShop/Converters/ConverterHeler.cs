@@ -43,7 +43,7 @@ namespace ZoDream.Shop.Converters
         public static Visibility CollapsedIfNullOrEmpty(string value) =>
             string.IsNullOrEmpty(value) ? Visibility.Collapsed : Visibility.Visible;
 
-        public static Visibility CollapsedIfEmpty(ObservableCollection<Product> value)
+        public static Visibility CollapsedIfEmpty(ObservableCollection<ProductSimple> value)
             => CollapsedIf(value == null || value.Count < 1);
 
         public static Visibility Visible0(int value) =>

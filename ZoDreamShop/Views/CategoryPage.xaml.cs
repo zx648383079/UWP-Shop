@@ -22,7 +22,7 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class CategoryPage : Page
+    public sealed partial class CategoryPage : Page, ISubPage
     {
         public CategoryPage()
         {
@@ -30,6 +30,8 @@ namespace ZoDream.Shop.Views
         }
 
         public CategoryViewModel ViewModel { get; } = new CategoryViewModel();
+
+        public string NavTitile => "分类";
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

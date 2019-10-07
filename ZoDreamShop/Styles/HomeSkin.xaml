@@ -31,7 +31,7 @@
                         <Image Source="{Binding Thumb}" Grid.ColumnSpan="2"/>
                         <TextBlock Text="{Binding Name}" Grid.ColumnSpan="2" Grid.Row="1"/>
                         <TextBlock Text="{Binding Price,Converter={StaticResource PriceConverter}}" Grid.Row="2"/>
-                        <Button Content="加入购物车" Grid.Row="2" Grid.Column="1"/>
+                        <Button Content="加入购物车" Grid.Row="2" Grid.Column="1" Tapped="AddToCart"/>
                     </Grid>
                 </DataTemplate>
             </Setter.Value>

@@ -20,14 +20,16 @@ using ZoDream.Shop.ViewModels;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace ZoDream.Shop.Views
+namespace ZoDream.Shop.Views.Member
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class LoginPage : Page
+    public sealed partial class LoginPage : Page, ISubPage
     {
         public LoginViewModel ViewModel { get; private set; } = new LoginViewModel();
+
+        public string NavTitile => "登录";
 
         public LoginPage()
         {

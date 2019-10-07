@@ -22,7 +22,7 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class SettingPage : Page
+    public sealed partial class SettingPage : Page, ISubPage
     {
         public string Version
         {
@@ -32,6 +32,8 @@ namespace ZoDream.Shop.Views
                 return String.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
             }
         }
+
+        public string NavTitile => "设置";
 
         public SettingPage()
         {

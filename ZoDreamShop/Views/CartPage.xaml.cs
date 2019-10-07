@@ -20,11 +20,13 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class CartPage : Page
+    public sealed partial class CartPage : Page, ISubPage
     {
         public CartPage()
         {
             this.InitializeComponent();
         }
+
+        public string NavTitile => "购物车";
     }
 }

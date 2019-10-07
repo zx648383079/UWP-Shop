@@ -30,7 +30,7 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class ScanPage : Page
+    public sealed partial class ScanPage : Page, ISubPage
     {
         private MediaCapture _mediaCapture;
         private DispatcherTimer _timer;
@@ -40,6 +40,8 @@ namespace ZoDream.Shop.Views
         BarcodeReader barcodeReader;
 
         private static readonly Guid RotationKey = new Guid("C380465D-2271-428C-9B83-ECEA3B4A85C1");
+
+        public string NavTitile => "扫一扫";
 
         public ScanPage()
         {

@@ -15,7 +15,7 @@ namespace ZoDream.Shop.ViewModels
         public SearchViewModel()
         {
             IsLoading = false;
-            Products = new IncrementalLoadingCollection<Product>(count =>
+            Products = new IncrementalLoadingCollection<ProductSimple>(count =>
             {
                 return Task.Run(async () =>
                 {
@@ -41,9 +41,9 @@ namespace ZoDream.Shop.ViewModels
 
         private bool hasMore = true;
 
-        private IncrementalLoadingCollection<Product> products;
+        private IncrementalLoadingCollection<ProductSimple> products;
 
-        public IncrementalLoadingCollection<Product> Products
+        public IncrementalLoadingCollection<ProductSimple> Products
         {
             get { return products; }
             set { Set(ref products, value); }
@@ -53,27 +53,27 @@ namespace ZoDream.Shop.ViewModels
         {
             Query = query;
             RefreshAsync();
-
         }
 
         public async void RefreshAsync()
         {
             Query.Page = 1;
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-            {
-                IsLoading = true;
-                Products.Clear();
-            });
-            var products = await App.Repository.Product.GetAsync(Query.ToQueries());
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-            {
-                foreach (var item in products.Data)
-                {
-                    Products.Add(item);
-                }
-                hasMore = products.Paging.More;
-                IsLoading = false;
-            });
+            _ = Products.LoadMoreItemsAsync(20);
+            //await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            //{
+            //    IsLoading = true;
+            //    Products.Clear();
+            //});
+            //var products = await App.Repository.Product.GetAsync(Query.ToQueries());
+            //await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            //{
+            //    foreach (var item in products.Data)
+            //    {
+            //        Products.Add(item);
+            //    }
+            //    hasMore = products.Paging.More;
+            //    IsLoading = false;
+            //});
         }
 
         public async void MoreAsync()

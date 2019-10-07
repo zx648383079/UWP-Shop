@@ -11,8 +11,7 @@
     <Grid>
         <NavigationView
             x:Name="NavView"
-            
-            AlwaysShowHeader="False"
+            Header="{Binding Path=Content.NavTitile, ElementName=frame}"
             IsSettingsVisible="True"
             ItemInvoked="NavigationView_ItemInvoked"
             BackRequested="NavView_BackRequested"

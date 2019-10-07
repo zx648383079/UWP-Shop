@@ -24,7 +24,7 @@ namespace ZoDream.Shop.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class AuthorizePage : Page
+    public sealed partial class AuthorizePage : Page, ISubPage
     {
         public AuthorizePage()
         {
@@ -33,12 +33,14 @@ namespace ZoDream.Shop.Views
 
         public AuthorizeViewModel ViewModel { get; private set; } = new AuthorizeViewModel();
 
+        public string NavTitile => "授权";
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             if (!App.IsLogin())
             {
-                Frame.Navigate(typeof(LoginPage));
+                Frame.Navigate(typeof(Member.LoginPage));
                 return;
             }
             ViewModel.User = App.ViewModel.User;

@@ -10,10 +10,10 @@ namespace ZoDream.Models
     public class HomeProduct: BaseResponse
     {
         [JsonProperty(PropertyName = "hot_products")]
-        public IEnumerable<Product> HotProducts { get; set; }
+        public IEnumerable<ProductSimple> HotProducts { get; set; }
         [JsonProperty(PropertyName = "new_products")]
-        public IEnumerable<Product> NewProducts { get; set; }
+        public IEnumerable<ProductSimple> NewProducts { get; set; }
         [JsonProperty(PropertyName = "best_products")]
-        public IEnumerable<Product> BestProducts { get; set; }
+        public IEnumerable<ProductSimple> BestProducts { get; set; }
     }
 }

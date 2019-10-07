@@ -44,25 +44,25 @@ namespace ZoDream.Shop.ViewModels
         }
 
 
-        private ObservableCollection<Product> hotProducts = new ObservableCollection<Product>();
+        private ObservableCollection<ProductSimple> hotProducts = new ObservableCollection<ProductSimple>();
 
-        public ObservableCollection<Product> HotProducts
+        public ObservableCollection<ProductSimple> HotProducts
         {
             get { return hotProducts; }
             set { Set(ref hotProducts, value); }
         }
 
-        private ObservableCollection<Product> newProducts = new ObservableCollection<Product>();
+        private ObservableCollection<ProductSimple> newProducts = new ObservableCollection<ProductSimple>();
 
-        public ObservableCollection<Product> NewProducts
+        public ObservableCollection<ProductSimple> NewProducts
         {
             get { return newProducts; }
             set { Set(ref newProducts, value); }
         }
 
-        private ObservableCollection<Product> bestProducts = new ObservableCollection<Product>();
+        private ObservableCollection<ProductSimple> bestProducts = new ObservableCollection<ProductSimple>();
 
-        public ObservableCollection<Product> BestProducts
+        public ObservableCollection<ProductSimple> BestProducts
         {
             get { return bestProducts; }
             set { Set(ref bestProducts, value); }

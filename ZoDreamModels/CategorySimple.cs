@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZoDream.Models
 {
-    public class Category
+    public class CategorySimple
     {
         public int Id { get; set; }
 
@@ -20,10 +20,5 @@ namespace ZoDream.Models
         public string AppBanner { get; set; }
 
         public int ParentId { get; set; }
-
-        public IEnumerable<Category> Children { get; set; }
-
-        [JsonProperty(PropertyName = "goods_list")]
-        public IEnumerable<ProductSimple> GoodsList { get; set; }
     }
 }

@@ -67,17 +67,25 @@
                 </ListBox>
                 <StackPanel Visibility="{x:Bind converter:ConverterHeler.CollapsedIfEmpty(ViewModel.NewProducts), Mode=OneWay}">
                     <TextBlock Text="最新商品" Style="{StaticResource HeaderTitle}"/>
-                    <GridView ItemsSource="{x:Bind ViewModel.NewProducts}" Style="{StaticResource GoodsList}">
+                    <GridView ItemsSource="{x:Bind ViewModel.NewProducts}" 
+                              IsItemClickEnabled="True"
+                              Style="{StaticResource GoodsList}" ItemClick="GridView_ItemClick">
                     </GridView>
                 </StackPanel>
                 <StackPanel Visibility="{x:Bind converter:ConverterHeler.CollapsedIfEmpty(ViewModel.HotProducts), Mode=OneWay}">
                     <TextBlock Text="热门商品" Style="{StaticResource HeaderTitle}"/>
-                    <GridView ItemsSource="{x:Bind ViewModel.HotProducts}" Style="{StaticResource GoodsList}">
+                    <GridView ItemsSource="{x:Bind ViewModel.HotProducts}" 
+                               ItemClick="GridView_ItemClick"
+                              IsItemClickEnabled="True"
+                              Style="{StaticResource GoodsList}">
                     </GridView>
                 </StackPanel>
                 <StackPanel Visibility="{x:Bind converter:ConverterHeler.CollapsedIfEmpty(ViewModel.BestProducts), Mode=OneWay}">
                     <TextBlock Text="推荐商品" Style="{StaticResource HeaderTitle}"/>
-                    <GridView ItemsSource="{x:Bind ViewModel.BestProducts}" Style="{StaticResource GoodsList}">
+                    <GridView ItemsSource="{x:Bind ViewModel.BestProducts}" 
+                               ItemClick="GridView_ItemClick"
+                              IsItemClickEnabled="True"
+                              Style="{StaticResource GoodsList}">
                     </GridView>
                 </StackPanel>
             </StackPanel>
